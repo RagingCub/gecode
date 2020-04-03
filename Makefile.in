@@ -1224,7 +1224,7 @@ TESTSRC0 = test/test.cpp test/afc.cpp test/ldsb.cpp test/region.cpp
 #	$(BRANCHTESTSRC0) $(SEARCHTESTSRC0) \
 #	$(ARRAYTESTSRC0) $(FLATZINCTESTSRC0)
 TESTSRC = \
-	$(TESTSRC0) test/int/distinct.cpp test/int/distinctnot.cpp
+	$(TESTSRC0) test/int.cpp test/int/distinct.cpp test/int/distinctnot.cpp
 
 TESTHDR0 = \
 	test.hh test.hpp int.hh int.hpp set.hh set.hpp float.hh float.hpp \
