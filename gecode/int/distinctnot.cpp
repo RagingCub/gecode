@@ -43,7 +43,7 @@
 namespace Gecode {
 
   void
-  distinct(Home home, const IntVarArgs& x, IntPropLevel ipl) {
+  distinctnot(Home home, const IntVarArgs& x, IntPropLevel ipl) {
     using namespace Int;
     if (same(x))
       throw ArgumentSame("Int::distinctnot");
