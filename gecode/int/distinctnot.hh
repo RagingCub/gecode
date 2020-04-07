@@ -37,8 +37,8 @@
  *
  */
 
-#ifndef __GECODE_INT_DISTINCT_HH__
-#define __GECODE_INT_DISTINCT_HH__
+#ifndef __GECODE_INT_DISTINCTNOT_HH__
+#define __GECODE_INT_DISTINCTNOT_HH__
 
 #include <gecode/int.hh>
 
@@ -46,18 +46,18 @@
 #include <gecode/int/rel.hh>
 
 /**
- * \namespace Gecode::Int::Distinct
- * \brief %Distinct propagators
+ * \namespace Gecode::Int::Distinctnot
+ * \brief %Distinctnot propagators
  */
 
-namespace Gecode { namespace Int { namespace Distinct {
+namespace Gecode { namespace Int { namespace Distinctnot {
 
   /**
-   * \brief Naive value distinct propagator
+   * \brief Naive value distinctnot propagator
    *
    * Eliminates values of assigned views of type \a View.
    *
-   * Requires \code #include <gecode/int/distinct.hh> \endcode
+   * Requires \code #include <gecode/int/distinctnot.hh> \endcode
    * \ingroup FuncIntProp
    */
   template<class View>

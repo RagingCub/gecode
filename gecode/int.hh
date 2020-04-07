@@ -1661,6 +1661,73 @@ namespace Gecode {
   //@}
 
 
+    /**
+     * \defgroup TaskModelIntDistinctnot Distinctnot constraints
+     * \ingroup TaskModelInt
+     */
+
+    //@{
+    /** \brief Post propagator for \f$ x_i\eq x_j\f$ for one in \f$0\leq i\neq j<|x|\f$
+     *
+     * Supports value (\a ipl = IPL_VAL, default), bounds (\a ipl = IPL_BND),
+     * and domain consistency (\a ipl = IPL_DOM).
+     *
+     * Throws an exception of type Int::ArgumentSame, if \a x contains
+     * the same unassigned variable multiply.
+     */
+    GECODE_INT_EXPORT void
+    distinctnot(Home home, const IntVarArgs& x,
+             IntPropLevel ipl=IPL_DEF);
+    /** \brief Post propagator for \f$ x_i+n_i\eq x_j+n_j\f$ for one in \f$0\leq i\neq j<|x|\f$
+     *
+     * \li Supports value (\a ipl = IPL_VAL, default), bounds (\a ipl = IPL_BND),
+     *     and domain consistency (\a ipl = IPL_DOM).
+     * \li Throws an exception of type Int::OutOfLimits, if
+     *     the integers in \a n exceed the limits in Int::Limits
+     *     or if the sum of \a n and \a x exceed the limits.
+     * \li Throws an exception of type Int::ArgumentSizeMismatch, if
+     *     \a x and \a n are of different size.
+     * \li Throws an exception of type Int::ArgumentSame, if \a x contains
+     *     the same unassigned variable multiply.
+     */
+    GECODE_INT_EXPORT void
+    distinctnot(Home home, const IntArgs& n, const IntVarArgs& x,
+             IntPropLevel ipl=IPL_DEF);
+    /** \brief Post propagator for \f$ b_i=1\wedge b_j=1\to x_i\eq x_j\f$ for one in \f$0\leq i\neq j<|x|\f$
+     *
+     * \li Supports value (\a ipl = IPL_VAL, default), bounds (\a ipl = IPL_BND),
+     *     and domain consistency (\a ipl = IPL_DOM).
+     * \li Throws an exception of type Int::OutOfLimits, if
+     *     the variable domains in \a x are too large (it must hold that
+     *     one of the values \f$(\max_{i=0,\ldots,|x|-1} \max(x_i))+|x|\f$
+     *     and \f$(\min_{i=0,\ldots,|x|-1} \min(x_i))-|x|\f$
+     *     does not exceed the limits in Int::Limits.
+     * \li Throws an exception of type Int::ArgumentSizeMismatch, if
+     *     \a b and \a x are of different size.
+     * \li Throws an exception of type Int::ArgumentSame, if \a x
+     *     contains the same unassigned variable multiply.
+     */
+    GECODE_INT_EXPORT void
+    distinctnot(Home home, const BoolVarArgs& b, const IntVarArgs& x,
+             IntPropLevel ipl=IPL_DEF);
+    /** \brief Post propagator for \f$ x_i=c\vee x_j=c\vee x_i\eq x_j\f$ for one in \f$0\leq i\neq j<|x|\f$
+     *
+     * \li Supports value (\a ipl = IPL_VAL, default), bounds (\a ipl = IPL_BND),
+     *     and domain consistency (\a ipl = IPL_DOM).
+     * \li Throws an exception of type Int::OutOfLimits, if
+     *     the variable domains in \a x are too large (it must hold that
+     *     one of the values \f$(\max_{i=0,\ldots,|x|-1} \max(x_i))+|x|\f$
+     *     and \f$(\min_{i=0,\ldots,|x|-1} \min(x_i))-|x|\f$
+     *     does not exceed the limits in Int::Limits.
+     * \li Throws an exception of type Int::ArgumentSame, if \a x
+     *     contains the same unassigned variable multiply.
+     */
+    GECODE_INT_EXPORT void
+    distinctnot(Home home, const IntVarArgs& x, int c,
+             IntPropLevel ipl=IPL_DEF);
+    //@}
+
+
   /**
    * \defgroup TaskModelIntChannel Channel constraints
    * \ingroup TaskModelInt
