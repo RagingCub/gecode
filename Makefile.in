@@ -320,7 +320,8 @@ INTSRC0 = \
 	linear/int-post.cpp linear-int.cpp \
 	linear/bool-post.cpp linear-bool.cpp \
 	branch.cpp distinct/eqite.cpp distinct/cbs.cpp \
-	distinct.cpp distinctnot.cpp sorted.cpp gcc.cpp \
+	distinct.cpp distinctnot/eqite.cpp distinctnot/cbs.cpp \
+	distinctnot.cpp sorted.cpp gcc.cpp \
 	channel.cpp channel/link-single.cpp channel/link-multi.cpp \
 	unshare.cpp sequence.cpp \
 	bin-packing.cpp bin-packing/propagate.cpp \
@@ -365,6 +366,11 @@ INTHDR0 = \
 	distinct/val.hpp distinct/ter-dom.hpp \
 	distinct/cbs.hpp \
 	distinct/eqite.hpp \
+	distinctnot/graph.hpp distinctnot/dom-ctrl.hpp \
+	distinctnot/bnd.hpp distinctnot/dom.hpp \
+	distinctnot/val.hpp distinctnot/ter-dom.hpp \
+	distinctnot/cbs.hpp \
+	distinctnot/eqite.hpp \
 	dom/range.hpp dom/set.hpp \
 	element/int.hpp element/view.hpp element/pair.hpp \
 	gcc/bnd.hpp gcc/dom.hpp gcc/bnd-sup.hpp gcc/dom-sup.hpp \
@@ -464,7 +470,7 @@ INTBUILDDIRS	= \
 	int/channel int/arithmetic int/linear int/bool int/branch int/exec \
 	int/element int/sequence int/bin-packing \
 	int/unary int/cumulative int/cumulatives int/task \
-	int/ldsb int/distinct int/trace int/order
+	int/ldsb int/distinct int/distinctnot int/trace int/order
 
 #
 # FLOAT COMPONENTS
