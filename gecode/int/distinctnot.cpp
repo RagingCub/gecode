@@ -37,7 +37,7 @@
  *
  */
 
-#include <gecode/int/distinct.hh>
+#include <gecode/int/distinctnot.hh>
 #include <gecode/int/bool.hh>
 
 namespace Gecode {
@@ -46,29 +46,29 @@ namespace Gecode {
   distinct(Home home, const IntVarArgs& x, IntPropLevel ipl) {
     using namespace Int;
     if (same(x))
-      throw ArgumentSame("Int::distinct");
+      throw ArgumentSame("Int::distinctnot");
     GECODE_POST;
     ViewArray<IntView> xv(home,x);
     switch (vbd(ipl)) {
     case IPL_BND:
-      GECODE_ES_FAIL(Distinct::Bnd<IntView>::post(home,xv));
+      GECODE_ES_FAIL(Distinctnot::Bnd<IntView>::post(home,xv));
       break;
     case IPL_DOM:
-      GECODE_ES_FAIL(Distinct::Dom<IntView>::post(home,xv));
+      GECODE_ES_FAIL(Distinctnot::Dom<IntView>::post(home,xv));
       break;
     default:
-      GECODE_ES_FAIL(Distinct::Val<IntView>::post(home,xv));
+      GECODE_ES_FAIL(Distinctnot::Val<IntView>::post(home,xv));
     }
   }
 
   void
-  distinct(Home home, const IntArgs& c, const IntVarArgs& x,
+  distinctnot(Home home, const IntArgs& c, const IntVarArgs& x,
            IntPropLevel ipl) {
     using namespace Int;
     if (same(x))
-      throw ArgumentSame("Int::distinct");
+      throw ArgumentSame("Int::distinctnot");
     if (c.size() != x.size())
-      throw ArgumentSizeMismatch("Int::distinct");
+      throw ArgumentSizeMismatch("Int::distinctnot");
     GECODE_POST;
     ViewArray<OffsetView> cx(home,x.size());
     for (int i=0; i<c.size(); i++) {
@@ -76,31 +76,31 @@ namespace Gecode {
                               static_cast<long long int>(x[i].min()));
       long long int cx_max = (static_cast<long long int>(c[i]) +
                               static_cast<long long int>(x[i].max()));
-      Limits::check(c[i],"Int::distinct");
-      Limits::check(cx_min,"Int::distinct");
-      Limits::check(cx_max,"Int::distinct");
+      Limits::check(c[i],"Int::distinctnot");
+      Limits::check(cx_min,"Int::distinctnot");
+      Limits::check(cx_max,"Int::distinctnot");
       cx[i] = OffsetView(x[i],c[i]);
     }
     switch (vbd(ipl)) {
     case IPL_BND:
-      GECODE_ES_FAIL(Distinct::Bnd<OffsetView>::post(home,cx));
+      GECODE_ES_FAIL(Distinctnot::Bnd<OffsetView>::post(home,cx));
       break;
     case IPL_DOM:
-      GECODE_ES_FAIL(Distinct::Dom<OffsetView>::post(home,cx));
+      GECODE_ES_FAIL(Distinctnot::Dom<OffsetView>::post(home,cx));
       break;
     default:
-      GECODE_ES_FAIL(Distinct::Val<OffsetView>::post(home,cx));
+      GECODE_ES_FAIL(Distinctnot::Val<OffsetView>::post(home,cx));
     }
   }
 
   void
-  distinct(Home home, const BoolVarArgs& b, const IntVarArgs& x,
+  distinctnot(Home home, const BoolVarArgs& b, const IntVarArgs& x,
            IntPropLevel ipl) {
     using namespace Int;
     if (same(x))
-      throw ArgumentSame("Int::distinct");
+      throw ArgumentSame("Int::distinctnot");
     if (b.size() != x.size())
-      throw ArgumentSizeMismatch("Int::distinct");
+      throw ArgumentSizeMismatch("Int::distinctnot");
     GECODE_POST;
 
     int n = x.size();
@@ -123,7 +123,7 @@ namespace Gecode {
     else if (min > Limits::min+m)
       start = min-(m+1);
     else
-      throw OutOfLimits("Int::distinct");
+      throw OutOfLimits("Int::distinctnot");
 
     ViewArray<IntView> y(home,m);
     int j = 0;
@@ -140,22 +140,22 @@ namespace Gecode {
 
     switch (vbd(ipl)) {
     case IPL_BND:
-      GECODE_ES_FAIL(Distinct::Bnd<IntView>::post(home,y));
+      GECODE_ES_FAIL(Distinctnot::Bnd<IntView>::post(home,y));
       break;
     case IPL_DOM:
-      GECODE_ES_FAIL(Distinct::Dom<IntView>::post(home,y));
+      GECODE_ES_FAIL(Distinctnot::Dom<IntView>::post(home,y));
       break;
     default:
-      GECODE_ES_FAIL(Distinct::Val<IntView>::post(home,y));
+      GECODE_ES_FAIL(Distinctnot::Val<IntView>::post(home,y));
     }
   }
 
   void
-  distinct(Home home, const IntVarArgs& x, int c,
+  distinctnot(Home home, const IntVarArgs& x, int c,
            IntPropLevel ipl) {
     using namespace Int;
     if (same(x))
-      throw ArgumentSame("Int::distinct");
+      throw ArgumentSame("Int::distinctnot");
     GECODE_POST;
 
     int n = x.size();
@@ -178,7 +178,7 @@ namespace Gecode {
     else if (min > Limits::min+m)
       start = min-(m+1);
     else
-      throw OutOfLimits("Int::distinct");
+      throw OutOfLimits("Int::distinctnot");
 
     ViewArray<IntView> y(home,m);
     int j = 0;
@@ -187,7 +187,7 @@ namespace Gecode {
         y[j] = x[i]; j++;
       } else if (!(x[i].assigned() && (x[i].val() == c))) {
         y[j] = IntVar(home, Limits::min, Limits::max);
-        GECODE_ES_FAIL(Distinct::EqIte::post
+        GECODE_ES_FAIL(Distinctnot::EqIte::post
                        (home, x[i], y[j], c, start+j));
         j++;
       }
@@ -195,13 +195,13 @@ namespace Gecode {
 
     switch (vbd(ipl)) {
     case IPL_BND:
-      GECODE_ES_FAIL(Distinct::Bnd<IntView>::post(home,y));
+      GECODE_ES_FAIL(Distinctnot::Bnd<IntView>::post(home,y));
       break;
     case IPL_DOM:
-      GECODE_ES_FAIL(Distinct::Dom<IntView>::post(home,y));
+      GECODE_ES_FAIL(Distinctnot::Dom<IntView>::post(home,y));
       break;
     default:
-      GECODE_ES_FAIL(Distinct::Val<IntView>::post(home,y));
+      GECODE_ES_FAIL(Distinctnot::Val<IntView>::post(home,y));
     }
   }
 

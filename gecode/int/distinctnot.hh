@@ -372,14 +372,14 @@ namespace Gecode { namespace Int { namespace Distinctnot {
 
 }}}
 
-#include <gecode/int/distinct/cbs.hpp>
-#include <gecode/int/distinct/val.hpp>
-#include <gecode/int/distinct/bnd.hpp>
-#include <gecode/int/distinct/ter-dom.hpp>
-#include <gecode/int/distinct/graph.hpp>
-#include <gecode/int/distinct/dom-ctrl.hpp>
-#include <gecode/int/distinct/dom.hpp>
-#include <gecode/int/distinct/eqite.hpp>
+#include <gecode/int/distinctnot/cbs.hpp>
+#include <gecode/int/distinctnot/val.hpp>
+#include <gecode/int/distinctnot/bnd.hpp>
+#include <gecode/int/distinctnot/ter-dom.hpp>
+#include <gecode/int/distinctnot/graph.hpp>
+#include <gecode/int/distinctnot/dom-ctrl.hpp>
+#include <gecode/int/distinctnot/dom.hpp>
+#include <gecode/int/distinctnot/eqite.hpp>
 
 #endif
 
