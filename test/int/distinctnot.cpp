@@ -50,10 +50,6 @@ namespace Test { namespace Int {
      class Distinctnot : public Test {
      public:
        /// Create and register test
-       Distinctnot(const Gecode::IntSet& d0, Gecode::IntPropLevel ipl,
-                int n=6)
-         : Test(std::string("aDistinctnot::")+str(ipl)+"::Sparse::"+str(n),n,d0,false,ipl) {}
-       /// Create and register test
        Distinctnot(int min, int max, Gecode::IntPropLevel ipl)
          : Test(std::string("aDistinctnot::")+str(ipl)+"::Dense",6,min,max,false,ipl) {}
        /// Check whether \a x is solution
@@ -70,26 +66,9 @@ namespace Test { namespace Int {
        }
      };
 
-     const int v[7] = {-1001,-1000,-10,0,10,1000,1001};
-     Gecode::IntSet d(v,7);
-     const int vl[6] = {Gecode::Int::Limits::min+0,
-                        Gecode::Int::Limits::min+1,
-                        Gecode::Int::Limits::min+2,
-                        Gecode::Int::Limits::max-2,
-                        Gecode::Int::Limits::max-1,
-                        Gecode::Int::Limits::max-0};
-     Gecode::IntSet dl(vl,6);
-
-     Distinctnot dom_d(-3,3,Gecode::IPL_DOM);
+//     Distinctnot dom_d(-3,3,Gecode::IPL_DOM);
      Distinctnot bnd_d(-3,3,Gecode::IPL_BND);
-     Distinctnot val_d(-3,3,Gecode::IPL_VAL);
-     Distinctnot dom_s(d,Gecode::IPL_DOM);
-     Distinctnot bnd_s(d,Gecode::IPL_BND);
-     Distinctnot val_s(d,Gecode::IPL_VAL);
-
-     Distinctnot dom_l(dl,Gecode::IPL_DOM,5);
-     Distinctnot bnd_l(dl,Gecode::IPL_BND,5);
-     Distinctnot val_l(dl,Gecode::IPL_VAL,5);
+//     Distinctnot val_d(-3,3,Gecode::IPL_VAL);
      //@}
 
    }
